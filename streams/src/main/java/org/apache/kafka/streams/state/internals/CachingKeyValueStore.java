@@ -123,7 +123,6 @@ public class CachingKeyValueStore
                 root,
                 (RecordBatchingStateRestoreCallback) records -> {
                     for (final ConsumerRecord<byte[], byte[]> record : records) {
-                        this.context.cache().delete(cacheName, Bytes.wrap(record.key()));
                         put(Bytes.wrap(record.key()), record.value());
                     }
                 }
